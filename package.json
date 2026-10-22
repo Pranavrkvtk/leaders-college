@@ -1,7 +1,8 @@
+
 {
   "name": "leaders-college-react",
-  "private": true,
   "version": "1.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,10 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "latest",
-    "vite": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "vite": "^6.4.0"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
 }
