@@ -17,9 +17,25 @@ export default function Hero() {
           <span>↗ Career growth</span>
         </div>
       </div>
-      <div className="hero-image" role="img" aria-label="Student with laptop and AI learning graphics">
-        <img src="/college-poster.jpeg" alt="Leaders College short-term courses poster" />
+
+      {/* NEW CSS POSTER GRAPHIC */}
+      <div className="hero-image" role="img" aria-label="AI and Tech learning graphic">
+        <div className="poster-graphic">
+          <div className="poster-grid"></div>
+          <div className="poster-circle"></div>
+          <div className="poster-content">
+            <span className="poster-tag">FUTURE READY</span>
+            <h2 className="poster-title">AI & TECH</h2>
+            <p className="poster-subtitle">Master the skills of tomorrow.</p>
+            <div className="poster-bars">
+              <div className="bar bar-1"></div>
+              <div className="bar bar-2"></div>
+              <div className="bar bar-3"></div>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div className="hero-bottom">
         <span>Learn Today</span>
         <span>Lead Tomorrow</span>
