@@ -1,122 +1,83 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import Hero from "./components/Hero.jsx";
+import CourseCard from "./components/CourseCard.jsx";
+import InfoGrid from "./components/InfoGrid.jsx";
+import Contact from "./components/Contact.jsx";
+import Testimonials from "./components/Testimonials.jsx";
 
-function App() {
-  const [count, setCount] = useState(0)
+const courses = [
+  {
+    number: "01",
+    title: "AI Essential – Basic / Foundation with Python",
+    duration: "2 Months",
+    schedule: "3 Days per Week",
+    fee: "₹20,000",
+    certification: "Leaders Certification",
+    theme: "blue",
+  },
+  {
+    number: "02",
+    title: "Advanced AI",
+    duration: "4 Months",
+    schedule: "3 Days per Week",
+    fee: "₹40,000",
+    certification: "IBM Certification + Leaders Certification",
+    theme: "cyan",
+  },
+  {
+    number: "03",
+    title: "AI Essential + Advanced AI",
+    duration: "5 Months",
+    schedule: "3 Days per Week",
+    fee: "₹50,000",
+    certification: "IBM Certification + Leaders Certification",
+    theme: "purple",
+  },
+  {
+    number: "04",
+    title: "Logistics & Supply Chain Management",
+    duration: "6 Months + optional 2-month internship",
+    schedule: "Contact admissions",
+    fee: "₹60,000",
+    certification: "FIATA Certification",
+    theme: "orange",
+  },
+  {
+    number: "05",
+    title: "Digital Marketing with AI",
+    duration: "6-month diploma",
+    schedule: "4 months training + 2 months internship",
+    fee: "₹60,000",
+    certification: "Course completion certification",
+    theme: "pink",
+  },
+];
 
+export default function App() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <main>
+      <Hero />
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      <section className="section courses-section" id="courses">
+        <div className="section-intro">
+          <p className="kicker">FIND YOUR NEXT STEP</p>
+          <h2>Choose your <em>course</em></h2>
+          <p>Practical, career-focused training designed to help you build in-demand skills.</p>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+        <div className="course-grid">
+          {courses.map((course) => (
+            <CourseCard key={course.number} course={course} />
+          ))}
         </div>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <InfoGrid />
+      <Testimonials />
+      <Contact />
+
+      <footer>
+        <span>LEADERS COLLEGE</span>
+        <span>Learn from industry experts · Build your future</span>
+      </footer>
+    </main>
+  );
 }
-
-export default App
