@@ -1,3 +1,5 @@
+import heroImage from '../assets/img1.jpeg'; // <-- Fixed path
+
 export default function Hero() {
   return (
     <section className="hero">
@@ -18,27 +20,16 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* NEW CSS POSTER GRAPHIC */}
-      <div className="hero-image" role="img" aria-label="AI and Tech learning graphic">
-        <div className="poster-graphic">
-          <div className="poster-grid"></div>
-          <div className="poster-circle"></div>
-          <div className="poster-content">
-            <span className="poster-tag">FUTURE READY</span>
-            <h2 className="poster-title">AI & TECH</h2>
-            <p className="poster-subtitle">Master the skills of tomorrow.</p>
-            <div className="poster-bars">
-              <div className="bar bar-1"></div>
-              <div className="bar bar-2"></div>
-              <div className="bar bar-3"></div>
-            </div>
-          </div>
-        </div>
+      <div className="hero-image">
+        <img 
+          src={heroImage} 
+          alt="Logistics professional course poster" 
+        />
       </div>
 
       <div className="hero-bottom">
-        <span>Learn Today</span>
-        <span>Lead Tomorrow</span>
+        <span className="anim-text learn">Learn Today</span>
+        <span className="anim-text lead">Lead Tomorrow</span>
       </div>
     </section>
   );

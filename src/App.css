@@ -37,8 +37,24 @@ h1 em, h2 em { color: #ffdd26; font-style: normal; }
 .hero-description { color: #c6d4eb; font-size: 17px; margin: 24px 0 20px; }
 .hero-pills { display: flex; flex-wrap: wrap; gap: 10px; color: #f9df44; font-size: 12px; font-weight: 700; }
 .hero-pills span { padding: 9px 11px; border: 1px solid #284b78; border-radius: 30px; background: #091936; }
-.hero-image { justify-self: stretch; }
-.hero-image img { display: block; width: 100%; max-height: 440px; object-fit: cover; object-position: center; border-radius: 22px; border: 1px solid #1f5c9e; box-shadow: 0 25px 80px #0008; }
+
+/* FIXED HERO IMAGE STYLES */
+.hero-image { 
+  justify-self: stretch; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-image img { 
+  display: block; 
+  width: 100%; 
+  height: auto; 
+  object-fit: contain; 
+  border-radius: 22px; 
+  border: 1px solid #1f5c9e; 
+  box-shadow: 0 25px 80px #0008; 
+}
+
 .hero-bottom { position: absolute; right: 6%; bottom: 24px; display: flex; gap: 12px; color: #ffe128; font-size: 14px; font-weight: 800; font-style: italic; transform: rotate(-4deg); }
 
 .section { width: min(1180px, 88%); margin: 0 auto; }
@@ -107,7 +123,6 @@ footer span:first-child { color: white; font-weight: 800; letter-spacing: 1px; }
 /* Media Queries */
 @media (max-width: 800px) {
   .hero { grid-template-columns: 1fr; padding-top: 50px; gap: 25px; }
-  .hero-image img { max-height: 360px; }
   .hero-bottom { top: 25px; bottom: auto; right: 7%; }
   .course-card, .course-card:nth-child(4), .course-card:nth-child(5) { grid-column: span 3; }
   .info-grid { grid-template-columns: 1fr 1fr; }
@@ -129,121 +144,51 @@ footer span:first-child { color: white; font-weight: 800; letter-spacing: 1px; }
   .testimonial-card, .testimonial-card:nth-child(4), .testimonial-card:nth-child(5) { grid-column: span 6; }
   .testimonials-section { padding-bottom: 60px; }
 }
+/* ---------- HERO BOTTOM ANIMATION ---------- */
 
-/* ---------- NEW HERO POSTER GRAPHIC ---------- */
-.hero-image {
-  justify-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.poster-graphic {
-  width: 100%;
-  height: 100%;
-  min-height: 400px;
-  max-height: 440px;
-  background: linear-gradient(135deg, #102b59, #050c20);
-  border-radius: 22px;
-  border: 1px solid #1f5c9e;
-  box-shadow: 0 25px 80px #0008;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 40px;
-}
-
-/* Decorative background elements */
-.poster-grid {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 30px 30px;
-  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-}
-
-.poster-circle {
-  position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(circle, rgba(83, 216, 255, 0.2) 0%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(20px);
-}
-
-.poster-content {
-  position: relative;
-  z-index: 2;
-}
-
-.poster-tag {
+.hero-bottom .anim-text {
   display: inline-block;
-  background: rgba(255, 223, 40, 0.15);
-  color: #ffdf28;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
-  border: 1px solid rgba(255, 223, 40, 0.3);
+  /* Create the gradient text effect */
+  background: linear-gradient(90deg, #ffe128, #ff9d00, #ffe128);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+  /* Apply the animations */
+  animation: 
+    shimmer 3s linear infinite, 
+    float 2.5s ease-in-out infinite;
 }
 
-.poster-title {
-  font-family: Manrope, sans-serif;
-  font-size: 46px;
-  font-weight: 800;
-  color: white;
-  margin: 0 0 10px 0;
-  line-height: 1;
-  letter-spacing: -1.5px;
+/* Stagger the second word so they don't move exactly at the same time */
+.hero-bottom .anim-text.lead {
+  animation-delay: 0.5s, 1.25s;
 }
 
-.poster-subtitle {
-  color: #aabbd5;
-  font-size: 15px;
-  margin: 0 0 30px 0;
+/* 1. The Color Shimmer Effect */
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
-/* Animated Data Bars */
-.poster-bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  height: 60px;
+/* 2. The Floating Effect */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); filter: drop-shadow(0 5px 8px rgba(255, 225, 40, 0.4)); }
+  100% { transform: translateY(0px); }
 }
 
-.bar {
-  width: 12px;
-  background: #277be5;
-  border-radius: 4px 4px 0 0;
-  animation: barGrow 1.5s ease-out infinite alternate;
-}
-
-.bar-1 {
-  height: 40%;
-  background: #19c6d0;
-  animation-delay: 0.2s;
-}
-.bar-2 {
-  height: 80%;
-  background: #ffdf28;
-  animation-delay: 0.5s;
-}
-.bar-3 {
-  height: 60%;
-  background: #bc6aff;
-  animation-delay: 0.8s;
-}
-
-@keyframes barGrow {
-  0% { transform: scaleY(0.5); transform-origin: bottom; }
-  100% { transform: scaleY(1); transform-origin: bottom; }
+/* Mobile Adjustments */
+@media (max-width: 800px) {
+  .hero-bottom {
+    font-size: 12px; /* Keeps it neat on smaller screens */
+  }
+  
+  /* Make the float slightly smaller on mobile */
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+    100% { transform: translateY(0px); }
+  }
 }
